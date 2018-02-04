@@ -1,4 +1,4 @@
-title: Sample Workshop
+title: Intro to Swift
 
 # People who have directly contributed content to this workhsop
 contributors:
@@ -6,27 +6,25 @@ contributors:
   - Martin Hartt
 
 # (optional) Non-contributors we would like to thank for helping to inspire, develop or facilitate this workshop
-thanks:
-  - Hacky Hal the chatbot pal
+thanks: []
 
 # (optional) Links that attendees may wish to read after the workshop
-further_reading_links:
-  - text: Sampling
-    url: https://en.wikipedia.org/wiki/Sampling_(music)
-  - text: Best websites a programmer should visit
-    url: https://github.com/sdmg15/Best-websites-a-programmer-should-visit#coding-practice-for-beginners
+# further_reading_links:
+#   - text: Sampling
+#     url: https://en.wikipedia.org/wiki/Sampling_(music)
+#   - text: Best websites a programmer should visit
+#     url: https://github.com/sdmg15/Best-websites-a-programmer-should-visit#coding-practice-for-beginners
 
 # (optional) Link to a video recording of the workshop
 recording_link: https://www.youtube.com/watch?v=FHG2oizTlpY
 
 # (optional) Link to any slides associated with the workshop
-slides_link: https://docs.google.com/presentation/d/10VeyoN7EzxfezPjInAda_uEBZ1yp1UkY7z8ST78Do8Q
+slides_link: https://docs.google.com/presentation/d/13CJCh77e0vzqzITuIx1jA6ZxuYmlOGByvq5pVg_PbAo/present?usp=sharing
 
 # A set of keywords associated with the workshop
 tags:
   - beginner
-  - javascript
-  - web
+  - swift
   - programming
 
 # A license code by which the workshop content is released
