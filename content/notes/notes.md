@@ -1,10 +1,10 @@
 ### Why Swift?
 
-- Apple platforms
-- ...but not just Apple platforms
-- Open source (swift.org)
-- Young language, you can shape its future
-- Employable skill
+Swift is *the* modern language for Apple platforms. Objective-C was, for a long time, the de facto language for Apple platforms. Now many software shops are not writing any new Objective-C code, in favour of writing all new code in Swift. The vast majority of Swift code is written for iOS and MacOS but its reach doesn't end there. I want to show you today that Swift is a **powerful** and **usable** general-purpose programming language that is not constrained to Apple platforms.
+
+Swift is open source. You can find the [compiler](https://github.com/apple/swift), [standard library](https://github.com/apple/swift/tree/master/stdlib/public/core) and [core libraries](https://github.com/apple/swift-corelibs-foundation) on GitHub. Proposals for changes are also open to all. If you choose to, you can participate in the process of shpaing the future of this language.
+
+If you're interested in mobile app development then you'll need to keep an eye on Swift but even outside of that context Swift is a great example of a modern programming language. Learning Swift may help you understand many other languages from which it draws inspiration.
 
 ### What we will cover
 
