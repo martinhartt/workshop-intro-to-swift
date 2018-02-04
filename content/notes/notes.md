@@ -1,17 +1,3 @@
-## Setup
-
-### Install swift
-
-Install swift locally by following [the official guide](https://swift.org/getting-started/#using-the-repl). Running `swift` in your shell should result in a REPL where swift code can be run.
-
-![](images/swift.png)
-
-### Install git
-
-Verify that git is installed on your machine by running `git`. You can [download it](https://git-scm.com/) if it doesn't recognise the command.
-
-![](images/git.png)
-
 ### Why Swift?
 
 - Apple platforms
@@ -103,6 +89,7 @@ for i in 0 ..< n {
 ```
 
 Enums allow us to branch our code based on the values of a variable or expression. Note that `break` is optional.
+
 ```swift
 let favouriteFood: String
 // set favouriteFood
@@ -119,6 +106,7 @@ switch favouriteFood {
 ```
 
 Default cases are required when all the possible cases aren't specified.
+
 ```swift
 let favouriteFood: String
 // set favouriteFood
@@ -130,12 +118,12 @@ switch favouriteFood {
     print("You’ve a sweet tooth")
 }
 // error: switch must be exhaustive, consider adding a default clause
-
 ```
 
 ### Functions
 
 We can define function with the `func` keyword. The types of the arguments and return are required.
+
 ```swift
 func isOne(number: Int) -> Bool {
   return number == 1
@@ -150,6 +138,7 @@ func isOne(number: Int) -> Bool {
 A class is like a template for an object. We define one with the `class` keyword.
 Classes can contain properties (values, variables) and methods (functions).
 `init` is a special method which defines the constructor.
+
 ```swift
 class Student {
   let name: String
@@ -172,6 +161,7 @@ richard.read()
 ### Structures
 
 Structs are equivalent to classes, except that they are copied rather than passed by reference.
+
 ```swift
 struct Instructor {
   let name: String
@@ -259,7 +249,7 @@ enum CardSuit {
 // so doesn’t complain
 ```
 
-The swift compiler is smart enough to infer a type for the enums.
+The Swift compiler is smart enough to infer a type for the enums.
 
 ```swift
 enum CardSuit {
@@ -267,7 +257,7 @@ enum CardSuit {
 
   func suitName() -> String {
     switch self {
-      case .spades:
+      case .spades: // <- Note didn't write 'CardSuit'
         return "Spades"
       case .clubs:
         return "Clubs"
@@ -278,10 +268,6 @@ enum CardSuit {
     }
   }
 }
-
-// Note no default case
-// but compiler knows that this covers all cases
-// so doesn’t complain
 ```
 
 We can also associate values with cases.
@@ -365,6 +351,7 @@ richardsLove ?? TrueLove("Taylor Swift")
 ```
 
 If we are 100% totally sure the optional isn't `nil`, we can force unwrap with `!`.
+
 ```swift
 
 let definiteLove = richardsLove!
