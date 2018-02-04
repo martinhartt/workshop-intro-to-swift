@@ -8,9 +8,8 @@ If you're interested in mobile app development then you'll need to keep an eye o
 
 ### What we will cover
 
-- Swift outside of the Apple context
 - Swift basic syntax
-- Great Swift features
+- Stand-out Swift features
 - Swift package manager
 
 ### Reference
@@ -18,6 +17,7 @@ If you're interested in mobile app development then you'll need to keep an eye o
 Use the [Swift Standard Library Documentation](https://developer.apple.com/documentation/swift) to quickly look up the various Swift data structures and APIs.
 
 ## Running Swift
+Let's start by making sure we can run Swift
 
 ### REPL mode
 
@@ -44,7 +44,7 @@ $ swiftc test.swift -o test
 $ ./test
 ```
 
-## Some syntax
+## Basic syntax
 
 Semicolons are optional 😉
 
@@ -59,6 +59,7 @@ let name = "Richard"
 ### Variables
 
 Variables store values which can be changed (are mutable). They are defined with `var`.
+
 ```swift
 var otherName = "Richard"
 otherName = "Hal" // This succeeds
@@ -67,6 +68,7 @@ otherName = "Hal" // This succeeds
 ### Explicitly declaring type
 
 We can define the type explicitly which constraints the value/variable to the type.
+
 ```swift
 let title: String
 title = "Mr"
@@ -75,6 +77,7 @@ title = "Mr"
 ### Control Flow
 
 In other language such as Java, we would use a `for` construct.
+
 ```
 for (int i = 0; i < n; i++) {
   // Use i
@@ -82,13 +85,14 @@ for (int i = 0; i < n; i++) {
 ```
 
 In Swift, we utilise the native ranges, which expresses loops in a more concise and expressive way.
+
 ```swift
 for i in 0 ..< n {
   // Use i
 }
 ```
 
-Enums allow us to branch our code based on the values of a variable or expression. Note that `break` is optional.
+`switch` statements allow us to branch our code based on the values of a variable or expression. Note that `break` is optional.
 
 ```swift
 let favouriteFood: String
@@ -122,7 +126,7 @@ switch favouriteFood {
 
 ### Functions
 
-We can define function with the `func` keyword. The types of the arguments and return are required.
+We can define functions with the `func` keyword. The arguments and return types are required. If a function does not return a value, don't give a return type.
 
 ```swift
 func isOne(number: Int) -> Bool {
@@ -160,7 +164,7 @@ richard.read()
 
 ### Structures
 
-Structs are equivalent to classes, except that they are copied rather than passed by reference.
+Structs are similar to classes
 
 ```swift
 struct Instructor {
@@ -182,8 +186,28 @@ hal.teach()
 
 ```
 
-EDITORS NOTE: We should remove the init as it is generated automatically for structs
+If we do not provide an initialiser, we get a **default initialiser** for free that simply takes values for all the stored properties and assigns them:
 
+```swift
+struct Instructor {
+  let name: String
+  var module: String
+  func teach() {
+    ...
+  }
+}
+
+let hal = Instructor(name: "Hal", module: "Swift")
+hal.teach()
+
+```
+So what's the difference between Structs and Classes?
+
+- Classes are 'reference types', structs are 'value types'. See here for a thorough explanation: [https://developer.apple.com/swift/blog/?id=10](https://developer.apple.com/swift/blog/?id=10)
+- Classes have additional features:
+  - Inheritance (`struct`s can use `protocol`s, something we'll discuss later)
+  - Type casting
+  - Deinitializers
 
 ### Extensions
 
@@ -297,7 +321,8 @@ let soupOfTheDayPrice = Price.unconfirmed
 
 In most other languages, any variable can potentially be optional (i.e. containing `null`).
 
-```
+```java
+// Some other language...
 TrueLove richardsLove = null
 ...
 // Remember to check for null
@@ -310,9 +335,9 @@ if (richardsLove == null) {
 
 ```
 
-This can result in a few `NullPointerException`s, which are annoying to debug.
+Failure to do this check can result in a `NullPointerException`. These are bugs we might not catch before we ship our code:
 
-```swift
+```java
 TrueLove richardsLove = null
 ...
 // forget to check for null
@@ -335,14 +360,15 @@ if let recipient = richardsLove {
 }
 ```
 
-### Working with Optionals
+#### Working with Optionals
 
 ```swift
 let richardsLove: TrueLove? = nil
 
 ```
 
-We can define default values with the `??` operator. In this example, when `richardsLove` doesn't exist, it will assign `TrueLove("Taylor Swift")`.
+We can define default values with the `??` operator. In the following example, when `richardsLove` doesn't exist, it will assign `TrueLove("Taylor Swift")`.
+
 ```swift
 
 let definiteLove =
@@ -350,7 +376,7 @@ richardsLove ?? TrueLove("Taylor Swift")
 // richardsLove: TrueLove (non-optional)
 ```
 
-If we are 100% totally sure the optional isn't `nil`, we can force unwrap with `!`.
+If we are 100% totally sure the optional isn't `nil`, we can **force unwrap** with `!`.
 
 ```swift
 
@@ -358,3 +384,18 @@ let definiteLove = richardsLove!
 // For when you can be sure that the value will be there
 // Note that in this case this is a runtime error!
 ```
+
+What if we wanted to get the name of `richardsLove`? Of ocurse this is also an optional value since Richard may not have a true love. We can't just say `richardsLove.name` since `richardsLove` could be `nil` and `nil` doesn't know how to deal with `name`. This is where **optional chaining** comes in. 
+
+```
+let richardsLoveName = richardsLove?.name
+```
+With the inclusion of that little question mark, this will evaluate to `nil` if `richardsLove` is `nil`, and the name of the `TrueLove` otherwise. 
+
+Now say for some reason we wanted to get the *middle* name of Richard's true love and then convert to lowercase. Richard might not have a true love, his true love might not have a middle name, but optional chaining has us covered:
+
+```
+let loverMiddleName = richardsLove?.middleName?.lowercased()
+```
+
+If Richard doesn't have a true love, *or* if he does but they don't have a middle name, then a 'link in the chain' is missing and the whole expression evaluates to nil. Otherwise we get the value we wanted.
