@@ -135,6 +135,44 @@ func isOne(number: Int) -> Bool {
 
 ```
 
+## Guard Statements
+Whilst we're talking about control flow, I want to show you an example of where Swift's type system makes life a lot easier for us sometimes.
+
+```swift
+guard(divisor != 0) else {
+	print("Can't divide by zero")
+	return
+}
+print(5 / divisor)
+return
+```
+
+*Guard statements* are like if statements but instead of executing the code inside the block when the condition *does* hold, a `guard` statement makes sure that the condition holds and then runs the code inside the block otherwise.
+
+Here's the cool bit: the type system will make sure that the else block either never terminates or it gets us out of the current scope. In this case, that has been done with a `return` but it could have been done by `throw`ing an error or  `break`ing or `continue`ing out of a current loop iteration.
+
+Why can't we just use an `if`?
+
+```
+if(divisor == 0) {
+	print("Can't divide by zero")
+}
+print(5 / divisor)
+return
+```
+Whoops! We forgot to return early when we recognised the 0. This compiles just fine but then crashes at runtime. With guard on the other hand:
+
+```
+guard(divisor != 0) else {
+	print("Can't divide by zero")
+}
+print(5 / divisor)
+return
+
+// error: 'guard' body may not fall through, consider using a 'return' or 'throw' to exit the scope
+```
+The compiler has caught this for us and saved us from another runtime error. Hooray!
+
 ## Classes, Structures, Enumerations
 
 ### Classes
