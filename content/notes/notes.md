@@ -437,3 +437,41 @@ let loverMiddleName = richardsLove?.middleName?.lowercased()
 ```
 
 If Richard doesn't have a true love, *or* if he does but they don't have a middle name, then a 'link in the chain' is missing and the whole expression evaluates to nil. Otherwise we get the value we wanted.
+
+### Protocols
+Protocols let us define a set of requirements that other types can declare conformance too. For example, the [standard library](https://github.com/apple/swift/blob/master/stdlib/public/core/Equatable.swift#L167) includes an `Equatable` protocol:
+
+```swift
+public protocol Equatable {
+  static func == (lhs: Self, rhs: Self) -> Bool
+}
+```
+
+This protocol has only one requirement, the static equality function. The built in [`Int`](https://developer.apple.com/documentation/swift/int) type conforms to this protocol and that's why we can do this:
+
+```swift
+4 == (2 + 2)
+// true
+```
+
+We can make our own types conform to `Equatable` simply by providing that one static method and *declaring conformance* with "`: Equatable`":
+
+```swift
+struct Instructor: Equatable {
+  let name: String
+  var module: String
+  static func == (lhs: Instructor, rhs: Instructor) -> Bool {
+  	return lhs.name == rhs.name && lhs.module == rhs.module
+  }
+}
+```
+And now we can compare two `Instructor`s with `==`
+
+Protocols are more powerful than they first appear:
+
+- Types can conform to multiple protocols
+- Extensions on protocols allow you to define default behaviours for types that conform to the protocol
+- Protocols can conform to other protocols
+- *Value* types (such as `struct`s) can conform to protocols, as we've just seen
+
+With all these features, [Protocol-Oriented Programming](https://m.youtube.com/watch?v=g2LwFZatfTI) is a real alternative (or accompaniment) to Obect-Oriented Programming that can make for simpler code. 
