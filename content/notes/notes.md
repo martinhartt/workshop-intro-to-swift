@@ -84,7 +84,7 @@ for (int i = 0; i < n; i++) {
 }
 ```
 
-In Swift, we utilise the native ranges, which expresses loops in a more concise and expressive way.
+In Swift, we utilise the native ranges, which defines loops in a more concise and expressive way.
 
 ```swift
 for i in 0 ..< n {
@@ -124,6 +124,28 @@ switch favouriteFood {
 // error: switch must be exhaustive, consider adding a default clause
 ```
 
+We can combine ranges and `switch` statements to check if a value is in a certain range:
+
+```swift
+let yourAge: Int = 20 // Set this to be your age
+
+switch yourAge {
+  case 0: // This will only match the number 0 
+    print("You are a baby")
+  case 1 ... 3: // This will match numbers 1, 2 and 3.
+    print("You are a toddler")
+  case 4 ... 11:
+    print("You are a child")
+  case 12 ..< 18: // Here we are checking for a range which is above and including 12, but less than 18.
+    print("You are a teenager")
+  case 18 ...: // Here we use a range with a lower bound of 18
+    print("You are an adult")
+  default: // For cases when there is a negative number
+    print("You can't have a negative age")
+}
+
+```
+
 ### Functions
 
 We can define functions with the `func` keyword. The arguments and return types are required. If a function does not return a value, don't give a return type.
@@ -135,7 +157,8 @@ func isOne(number: Int) -> Bool {
 
 ```
 
-## Guard Statements
+## Guard Statements
+
 Whilst we're talking about control flow, I want to show you an example of where Swift's type system makes life a lot easier for us sometimes.
 
 ```swift
