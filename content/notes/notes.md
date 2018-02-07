@@ -17,7 +17,7 @@ If you're interested in mobile app development then you'll need to keep an eye o
 Use the [Swift Standard Library Documentation](https://developer.apple.com/documentation/swift) to quickly look up the various Swift data structures and APIs.
 
 ## Running Swift
-Let's start by making sure we can run Swift
+Let's start by making sure we can run Swift.
 
 ### REPL mode
 
@@ -46,11 +46,13 @@ $ ./test
 
 ## Basic syntax
 
-Semicolons are optional 😉
+### Semicolons
+
+Unlike other languages, semicolons are optional and generally not preffered.
 
 ### Values
 
-Values are constant variables which never change value (are immuatable). They are defined with the `let` keyword.
+Values are constant variables which never change value (are immutable). They are defined with the `let` keyword.
 ```swift
 let name = "Richard"
 // name = "Hal" <- This would fail!
@@ -78,7 +80,7 @@ title = "Mr"
 
 In other language such as Java, we would use a `for` construct.
 
-```
+```java
 for (int i = 0; i < n; i++) {
   // Use i
 }
@@ -92,7 +94,9 @@ for i in 0 ..< n {
 }
 ```
 
-`switch` statements allow us to branch our code based on the values of a variable or expression. Note that `break` is optional.
+`switch` statements allow us to branch our code based on the values of a variable or expression. 
+
+Note that the `break` keyword is optional, as it is automatically inserted at the end of every case. 
 
 ```swift
 let favouriteFood: String
@@ -148,7 +152,7 @@ switch yourAge {
 
 ### Functions
 
-We can define functions with the `func` keyword. The arguments and return types are required. If a function does not return a value, don't give a return type.
+We can define functions with the `func` keyword. The arguments and return types are required. If a function does not return a value, don't specify a return type.
 
 ```swift
 func isOne(number: Int) -> Bool {
@@ -163,8 +167,8 @@ Whilst we're talking about control flow, I want to show you an example of where 
 
 ```swift
 guard(divisor != 0) else {
-	print("Can't divide by zero")
-	return
+  print("Can't divide by zero")
+  return
 }
 print(5 / divisor)
 return
@@ -178,7 +182,7 @@ Why can't we just use an `if`?
 
 ```
 if(divisor == 0) {
-	print("Can't divide by zero")
+  print("Can't divide by zero")
 }
 print(5 / divisor)
 return
@@ -187,7 +191,7 @@ Whoops! We forgot to return early when we recognised the 0. This compiles just f
 
 ```
 guard(divisor != 0) else {
-	print("Can't divide by zero")
+  print("Can't divide by zero")
 }
 print(5 / divisor)
 return
@@ -225,7 +229,7 @@ richard.read()
 
 ### Structures
 
-Structs are similar to classes
+Structs are similar to classes:
 
 ```swift
 struct Instructor {
