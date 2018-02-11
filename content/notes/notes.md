@@ -14,7 +14,9 @@ If you're interested in mobile app development then Swift programming is an esse
 
 - Swift basic syntax
 - Stand-out Swift features
-- Swift package manager
+- Building an example app
+
+This workshop covers most of the content of the 'A Swift Tour' section of [The Swift Programming Language](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html). This is the go-to resource for learning the interesting bits of Swift and if you're interested in learning more then that should be your first stop.
 
 ### References
 
@@ -23,6 +25,8 @@ Most of the time when you write Swift, you are using a combination of:
 - built in Swift features (e.g. `Array`s)
 - Swift Standard Library features (e.g. Sorting `Array`s)
 - `Foundation` library features (e.g. Separating a `String` by, say, commas)
+
+
 
 If you're on a Mac, Xcode is the best way of reading the documentation for these things. Open Xcode and go to Help > Developer Documentation and you can search for what you need.
 
@@ -33,18 +37,27 @@ If you're not on a Mac, it can be tricky to find the right docs though they are 
 
 In practice, Google is usually a quicker way to find the information you need.
 
-## Running Swift
+## Getting started
+To follow along with this workshop, you'll need to clone the example repository:
+
+```bash
+$ git clone https://github.com/hackersatcambridge/workshop-intro-to-swift
+Cloning into workshop-intro-to-git...
+$ cd workshop-intro-to-git/examples
+```
+
+### Running Swift
 Let's start by making sure we can run Swift
 
-### REPL mode
+#### REPL mode
 
-Runs a 'read, evaluate, print' loop.
+Runs a 'read, evaluate, print' loop. Type instructions and press enter to run them. Note that this mode may not work in Linux containers (but should do on native Linux machines).
 
 ```bash
 $ swift
 ```
 
-### Interpreted mode
+#### Interpreted mode
 
 File is read and executed line-by-line.
 
@@ -52,7 +65,7 @@ File is read and executed line-by-line.
 $ swift test.swift
 ```
 
-### Compiled mode
+#### Compiled mode
 
 The swift file is compiled into a native executable.
 
