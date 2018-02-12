@@ -29,13 +29,16 @@ func readLongitude() -> Double {
   // It should check if there is an input string and also check if
   // the Double constructor returns a non-nil value.
   // If either of these values fail, print the string "Invalid, please try again".
-  // Avoid using the force unwrap operator "!"
+  // Make sure to try it out with weird inputs (e.g. "hello"). It should not crash!
   // The readLatitude implementation above should help!
 
   while(true) {
     print("Enter your longitude: ")
-    let input: String? = readLine()
-    let longitude: Double? = Double(input) // Double expects a non-optional String
+    let input = readLine()!
+    let longitude: Double? = Double(input)
+    
+    // How do we make longitude non-optional?
+    
     return longitude
   }
 }
