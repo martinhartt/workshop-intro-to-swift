@@ -76,11 +76,13 @@ $ ./test
 
 ## Basic syntax
 
-Semicolons are optional 😉
+### Semicolons
+
+Unlike other languages, semicolons are optional and generally not preffered.
 
 ### Values
 
-Values are constant variables which never change value (are immuatable). They are defined with the `let` keyword.
+Values are constant variables which never change value (are immutable). They are defined with the `let` keyword.
 ```swift
 let name = "Richard"
 // name = "Hal" <- This would fail!
@@ -108,13 +110,13 @@ title = "Mr"
 
 In other language such as Java, we would use a `for` construct.
 
-```
+```java
 for (int i = 0; i < n; i++) {
   // Use i
 }
 ```
 
-In Swift, we utilise the native ranges, which expresses loops in a more concise and expressive way.
+In Swift, we utilise the native ranges, which defines loops in a more concise and expressive way.
 
 ```swift
 for i in 0 ..< n {
@@ -122,7 +124,9 @@ for i in 0 ..< n {
 }
 ```
 
-`switch` statements allow us to branch our code based on the values of a variable or expression. Note that `break` is optional.
+`switch` statements allow us to branch our code based on the values of a variable or expression. 
+
+Note that the `break` keyword is optional, as it is automatically inserted at the end of every case. 
 
 ```swift
 let favouriteFood: String
@@ -154,9 +158,31 @@ switch favouriteFood {
 // error: switch must be exhaustive, consider adding a default clause
 ```
 
+We can combine ranges and `switch` statements to check if a value is in a certain range:
+
+```swift
+let yourAge: Int = 20 // Set this to be your age
+
+switch yourAge {
+  case 0: // This will only match the number 0 
+    print("You are a baby")
+  case 1 ... 3: // This will match numbers 1, 2 and 3.
+    print("You are a toddler")
+  case 4 ... 11:
+    print("You are a child")
+  case 12 ..< 18: // Here we are checking for a range which is >= 12, but < 18.
+    print("You are a teenager")
+  case 18 ...: // As no upper bound is specified, this matches all >= 18
+    print("You are an adult")
+  default: // For cases when there is a negative number
+    print("You can't have a negative age")
+}
+
+```
+
 ### Functions
 
-We can define functions with the `func` keyword. The arguments and return types are required. If a function does not return a value, don't give a return type.
+We can define functions with the `func` keyword. The arguments and return types are required. If a function does not return a value, don't specify a return type.
 
 ```swift
 func isOne(number: Int) -> Bool {
@@ -165,13 +191,14 @@ func isOne(number: Int) -> Bool {
 
 ```
 
-## Guard Statements
+## Guard Statements
+
 Whilst we're talking about control flow, I want to show you an example of where Swift's type system makes life a lot easier for us sometimes.
 
 ```swift
 guard(divisor != 0) else {
-	print("Can't divide by zero")
-	return
+  print("Can't divide by zero")
+  return
 }
 print(5 / divisor)
 return
@@ -185,7 +212,7 @@ Why can't we just use an `if`?
 
 ```
 if(divisor == 0) {
-	print("Can't divide by zero")
+  print("Can't divide by zero")
 }
 print(5 / divisor)
 return
@@ -194,7 +221,7 @@ Whoops! We forgot to return early when we recognised the 0. This compiles just f
 
 ```
 guard(divisor != 0) else {
-	print("Can't divide by zero")
+  print("Can't divide by zero")
 }
 print(5 / divisor)
 return
@@ -232,7 +259,7 @@ richard.read()
 
 ### Structures
 
-Structs are similar to classes
+Structs are similar to classes:
 
 ```swift
 struct Instructor {
