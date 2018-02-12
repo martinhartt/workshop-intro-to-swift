@@ -57,11 +57,11 @@ case unisex
 }
 
 // TODO #4:
-// Using what you know about switch statements, implement this function genderFromString
+// Using what you know about switch statements, implement this function
 // which returns a Gender given the user input string. If it doesn't match with
 // any of the options, return nil.
 func gender(from string: String) -> Gender? {
-  return .male
+  return nil
 }
 
 func readGender() -> Gender {
