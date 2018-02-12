@@ -110,7 +110,7 @@ Unlike other languages, semicolons are optional and generally not preffered.
 
 ### Values
 
-Values are constant variables which never change value (are 'immutable'). They are defined with the `let` keyword. Attempts to change the value of a constant will fail at *compile time*
+Values are constant variables which never change value (are 'immutable'). They are defined with the `let` keyword. Attempts to change the value of a constant will fail at [*compile time*](https://pc.net/helpcenter/answers/compile_time_vs_runtime).
 
 ```swift
 let name = "Richard"
