@@ -228,7 +228,7 @@ switch yourAge {
     print("You are a child")
   case 12 ..< 18: // Here we are checking for a range which is >= 12, but < 18.
     print("You are a teenager")
-  case 18 ...: // As no upper bound is specified, this matches all >= 18
+  case 18...: // As no upper bound is specified, this matches all >= 18
     print("You are an adult")
   default: // For cases when there is a negative number
     print("You can't have a negative age")
