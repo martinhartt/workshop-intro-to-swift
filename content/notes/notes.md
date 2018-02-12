@@ -37,7 +37,8 @@ If you're not on a Mac, it can be tricky to find the right docs though they are 
 
 In practice, Google is usually a quicker way to find the information you need.
 
-## Getting started
+## Getting started
+
 To follow along with this workshop, you'll first need to clone the example repository:
 
 ```bash
