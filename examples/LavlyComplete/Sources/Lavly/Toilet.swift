@@ -5,4 +5,5 @@ struct Toilet {
   let price: Int?
   let hasBabyChanging: Bool
   let radarKeyRequired: Bool
+  let supportedGenders: [Gender]
 }
