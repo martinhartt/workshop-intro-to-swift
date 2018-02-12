@@ -82,7 +82,7 @@ In your terminal, navigate to `examples/Lavy`. Make sure you can run it by runni
 ```swift
 $ swift run
 ```
-This is running `swiftc` on a bunch of different files for us and then running the compiled binary. Handy! (this is a feature of 'Swift Package Manager' which we won't talk too much about here).
+This is running `swiftc` on a bunch of different files for us and then running the compiled binary. Handy! (this is a feature of 'Swift Package Manager' which we won't talk too much about here but you can read more [here](https://swift.org/package-manager/)).
 
 You should see something like the following:
 
