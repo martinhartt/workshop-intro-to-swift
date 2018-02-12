@@ -101,13 +101,33 @@ otherName = "Hal" // This succeeds
 
 ### Explicitly declaring type
 
-We can define the type explicitly. Notice that we didn't *have* to do this before since Swift can *infer* the type of the variable from the type of the value that you assign to it.
+We can define the 'type' of a variable explicitly using a colon followed by the type name:
 
 ```swift
 let title: String
 title = "Mr"
 ```
+Notice that we didn't *have* to do this before since Swift can *infer* the type of the variable from the type of the value that you assign to it. e.g. if we assign a String to `title` then it knows that `title` should be of type `String`
+
 In this case, we have declared the variable before initialising it with a value so we do need to explicitly tell Swift what it's type is going to be.
+
+### Array
+Some other language require arrays to be of a fixed size:
+
+```
+int intArray[] = new integer[4];
+// Fixed size, cannot expand
+```
+
+This doesn't happen in Swift. We can add elements to arrays on the fly and Swift will efficiently handle changing the size of the array for us.
+
+```swift
+var intArray: [Int]
+intArray = [1, 2, 3]
+intArray += [4, 5, 6]
+// intArray == [1, 2, 3, 4, 5, 6]
+// intArray[0] == 1
+```
 
 ### Control Flow
 #### For loops
