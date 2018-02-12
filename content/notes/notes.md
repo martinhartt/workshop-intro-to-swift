@@ -177,7 +177,7 @@ for i in 0 ..< n {
 Here `0 ..< n` indicates the *range* of numbers from 0 up to (but not including) `n` and the `for i in 0 ..< n` iterates through each value in that range.
 We can also do an inclusive range like so: `0 ... n`
 
-#### Switch statements
+#### Switch statements
 
 `switch` statements allow us to branch our code based on the values of a variable or expression. Here we want to produce a response based on the value of a `favouriteFood` string.
 
@@ -229,10 +229,9 @@ switch yourAge {
   default: // For cases when there is a negative number
     print("You can't have a negative age")
 }
-
 ```
 
-#### Guard Statements
+#### Guard Statements
 Whilst we're talking about control flow, I want to show you an example of where the Swift compiler makes life a lot easier for us sometimes.
 
 ```swift
