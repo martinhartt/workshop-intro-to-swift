@@ -170,9 +170,15 @@ for (int i = 0; i < n; i++) {
 This is a bit clunky when our intention is to do something with each value from 0 to `n`. In Swift, we utilise the native ranges, which expresses loops in a more concise and expressive way.
 
 ```swift
+let n = 5
 for i in 0 ..< n {
-  // Use i
+  print(i)
 }
+// 0
+// 1
+// 2
+// 3
+// 4
 ```
 Here `0 ..< n` indicates the *range* of numbers from 0 up to (but not including) `n` and the `for i in 0 ..< n` iterates through each value in that range.
 We can also do an inclusive range like so: `0 ... n`
