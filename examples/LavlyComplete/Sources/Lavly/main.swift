@@ -17,6 +17,7 @@ print("""
 let currentLocation = readLocation()
 let requireBabyChanging = readRequiresBabyChanging()
 let showFreeOnly = readShowFreeOnly()
+let requestedGender = readGender() 
 
 print("Searching toilets...")
 print("Location: (\(currentLocation.latitude), \(currentLocation.longitude))")
@@ -35,6 +36,8 @@ if showFreeOnly {
 if requireBabyChanging {
   toilets = toilets.filter { $0.hasBabyChanging }
 }
+     
+toilets = toilets.filter { $0.supportedGenders.contains(requestedGender) } 
 
 toilets = toilets.sorted { currentLocation.distance(to: $0.location) < currentLocation.distance(to: $1.location) }
 
