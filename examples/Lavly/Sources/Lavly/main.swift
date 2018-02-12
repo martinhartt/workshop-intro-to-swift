@@ -18,9 +18,14 @@ let currentLocation = readLocation()
 // TODO #3: Uncomment this
 // let requireBabyChanging = readRequiresBabyChanging()
 
-// TODO #5: Set a constant called 'showFreeOnly' to the value returned by your
+// TODO #5: Set a constant called 'showFreeOnly' to the value returned by the
 // readShowFreeOnly() function
 
+     
+     
+
+let requestedGender = readGender() 
+    
 print("Searching toilets...")
 print("Location: (\(currentLocation.latitude), \(currentLocation.longitude))")
 // print("Requires baby changing facilities: \(requireBabyChanging)")
@@ -36,7 +41,11 @@ var toilets = cambridgeToilets
 // if the user only wants to see free toilets, filter out the toilets that aren't free.
 
 // TODO #8: 
-// If the user requires baby changing facilities, filter the toilets array appropriately
+// If the user requires baby changing facilities, filter the toilets array appropriately.
+
+// TODO #8.5:
+// Filter the toilets to only include those which support the requested gender.
+// Hint: https://developer.apple.com/documentation/swift/array/2945493-contains
 
 // TODO #9: 
 // Using what you know about closures in Swift, read about the `sorted(by: )` method on Array:
