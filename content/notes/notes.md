@@ -162,6 +162,7 @@ intArray += [4, 5, 6]
 In other languages such as Java, we would use a `for` construct like this:
 
 ```java
+// Some other language...
 for (int i = 0; i < n; i++) {
   // Use i
 }
@@ -287,6 +288,7 @@ Here we are representing Richard's true love in this variable `richardsLove`. It
 When we come to use this value, we make sure to remember to check if it's null.
 
 ```java
+// Some other language...
 if (richardsLove == null) {
   // Do nothing
 } else {
@@ -298,6 +300,7 @@ if (richardsLove == null) {
 But what if we forget to make this check?
 
 ```java
+// Some other language...
 TrueLove richardsLove = null
 ...
 // forget to check for null
