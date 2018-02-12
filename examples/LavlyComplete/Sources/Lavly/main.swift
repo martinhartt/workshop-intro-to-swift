@@ -29,7 +29,11 @@ print()
 var toilets = cambridgeToilets
 
 if showFreeOnly {
-  toilets = toilets.filter { $0.price == .value(0) }
+  toilets = toilets.filter { $0.price == 0 }
+}
+
+if requireBabyChanging {
+  toilets = toilets.filter { $0.hasBabyChanging }
 }
 
 toilets = toilets.sorted { currentLocation.distance(to: $0.location) < currentLocation.distance(to: $1.location) }
