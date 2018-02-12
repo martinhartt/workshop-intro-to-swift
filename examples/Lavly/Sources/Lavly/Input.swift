@@ -87,18 +87,13 @@ func readGender() -> Gender {
 
 
 func readShowFreeOnly() -> Bool {
-  while true {
-    print("Do you need a free toilet? Answer [y/n]")
-    if let input = readLine() {
-      switch input.lowercased() {
-      case "y":
-        return true
-      case "n":
-        return false
-      default:
-        break
+  while(true) {
+    print("Show free toilets only? (Y/n)")
+    if let responseString = readLine() {
+      switch responseString.lowercased() {
+      case "n": return false
+      default: return true
       }
     }
-    print("Invalid, please try again")
   }
 }
