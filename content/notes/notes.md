@@ -114,8 +114,7 @@ Values are constant variables which never change value (are 'immutable'). They a
 
 ```swift
 let name = "Richard"
-// name = "Hal" <- This would fail
-// error: cannot assign to value: 'name' is a 'let' constant
+name = "Hal" // error: cannot assign to value: 'name' is a 'let' constant
 ```
 
 ### Variables
