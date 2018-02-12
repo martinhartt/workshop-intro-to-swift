@@ -25,11 +25,19 @@ func readLatitude() -> Double {
 
 func readLongitude() -> Double {
   // TODO #1:
-  // Using what you know about optionals, make this function read a Double from
-  // the command line. The readLatitude implementation above should help!
+  // Using what you know about optionals, fix this broken function.
+  // It should check if there is an input string and also check if
+  // the Double constructor returns a non-nil value.
+  // If either of these values fail, print the string "Invalid, please try again".
+  // Avoid using the force unwrap operator "!"
+  // The readLatitude implementation above should help!
 
-  // Delete this line
-  fatalError("readLongitude is not yet implemented!") 
+  while(true) {
+    print("Enter your longitude: ")
+    let input: String? = readLine()
+    let longitude: Double? = Double(input) // Double expects a non-optional String
+    return longitude
+  }
 }
 
 func readLocation() -> Location {
