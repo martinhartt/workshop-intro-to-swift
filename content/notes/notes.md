@@ -76,7 +76,9 @@ $ ./test
 
 ## Basic syntax
 
-Let's take a look at some of the basic syntax of Swift. Note throughout that semicolons are optional!
+Let's take a look at some of the basic syntax of Swift. 
+
+Unlike other languages, semicolons are optional and generally not preffered.
 
 ### Values
 
@@ -112,11 +114,12 @@ In this case, we have declared the variable before initialising it with a value 
 
 In other languages such as Java, we would use a `for` construct like this:
 
-```
+```java
 for (int i = 0; i < n; i++) {
   // Use i
 }
 ```
+
 This is a bit clunky when our intention is to do something with each value from 0 to `n`. In Swift, we utilise the native ranges, which expresses loops in a more concise and expressive way.
 
 ```swift
@@ -160,13 +163,35 @@ switch favouriteFood {
 // error: switch must be exhaustive, consider adding a default clause
 ```
 
+We can combine ranges and `switch` statements to check if a value is in a certain range:
+
+```swift
+let yourAge: Int = 20 // Set this to be your age
+
+switch yourAge {
+  case 0: // This will only match the number 0 
+    print("You are a baby")
+  case 1 ... 3: // This will match numbers 1, 2 and 3.
+    print("You are a toddler")
+  case 4 ... 11:
+    print("You are a child")
+  case 12 ..< 18: // Here we are checking for a range which is >= 12, but < 18.
+    print("You are a teenager")
+  case 18 ...: // As no upper bound is specified, this matches all >= 18
+    print("You are an adult")
+  default: // For cases when there is a negative number
+    print("You can't have a negative age")
+}
+
+```
+
 #### Guard Statements
 Whilst we're talking about control flow, I want to show you an example of where the Swift compiler makes life a lot easier for us sometimes.
 
 ```swift
 guard(divisor != 0) else {
-	print("Can't divide by zero")
-	return
+  print("Can't divide by zero")
+  return
 }
 print(5 / divisor)
 return
@@ -190,7 +215,7 @@ Whoops! We forgot to return early when we recognised the 0. This compiles just f
 
 ```
 guard(divisor != 0) else {
-	print("Can't divide by zero")
+  print("Can't divide by zero")
 }
 print(5 / divisor)
 return
