@@ -15,7 +15,7 @@ struct Location {
   }
 
   var description: String {
-    return "(\(toilet.location.latitude), \(toilet.location.longitude))"
+    return "(\(latitude), \(longitude))"
   }
 }
 
