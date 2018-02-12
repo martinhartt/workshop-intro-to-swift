@@ -188,9 +188,7 @@ We can also do an inclusive range like so: `0 ... n`
 `switch` statements allow us to branch our code based on the values of a variable or expression. Here we want to produce a response based on the value of a `favouriteFood` string.
 
 ```swift
-let favouriteFood: String
-// ...
-// set favouriteFood
+let favouriteFood = "ratatouille"
 
 switch favouriteFood {
   case "salad":
