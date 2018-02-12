@@ -24,12 +24,14 @@ func readLatitude() -> Double {
 }
 
 func readLongitude() -> Double {
-  // TODO #1:
-  // Using what you know about optionals, make this function read a Double from
-  // the command line. The readLatitude implementation above should help!
-
-  // Delete this line
-  fatalError("readLongitude is not yet implemented!") 
+  while(true) {
+    print("Enter your longitude: ")
+    if let longitude = Double(readLine()!) {
+        return longitude
+    } else {
+      print("Invalid, please try again")
+    }
+  }
 }
 
 func readLocation() -> Location {
@@ -42,15 +44,25 @@ func readLocation() -> Location {
   )
 }
 
-// TODO #2:
-// Using what you know about switch statements, add a function
-// readRequiresBabyChanging() that asks the user if they require baby-chainging
-// facilities and then reads a line from the terminal. If that 
-// line is "y" or "Y" then return true, otherwise return false
-// What should be the return type of this function?
+func readRequiresBabyChanging() -> Bool {
+  while(true) {
+    print("Do you require baby changing facilities? (N/y)")
+    // Here we lowercase so that both "y" and "Y" has the same effect
+    switch readLine()!.lowercased() {
+    case "y": return true
+    default: return false
+    }
+  }
+}
 
-
-// TODO #4:
-// Using what you know about switch statements, add a function
-// readShowFreeOnly() similar to readRequiresBabyChanging that asks if the
-// user wants to see only free toilets.
+func readShowFreeOnly() -> Bool {
+  while(true) {
+    print("Show free toilets only? (Y/n)")
+    if let responseString = readLine() {
+      switch responseString.lowercased() {
+      case "n": return false
+      default: return true
+      }
+    }
+  }
+}

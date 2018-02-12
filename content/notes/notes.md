@@ -74,6 +74,33 @@ $ swiftc test.swift -o test
 $ ./test
 ```
 
+In this workshop we'll be building a small example app that touches on many of the features of Swift that we're going to cover. The app is a directory of public toilets in Cambridge. We'll tell it where we are and a few other details and it'll give us our nearest public toilet!
+
+In your terminal, navigate to `examples/Lavy`. Make sure you can run it by running:
+
+```swift
+$ swift run
+```
+This is running `swiftc` on a bunch of different files for us and then running the compiled binary. Handy! (this is a feature of 'Swift Package Manager' which we won't talk too much about here).
+
+You should see something like the following:
+
+```
+Compile Swift Module 'Lavly' (5 sources)
+Linking ./.build/x86_64-apple-macosx10.10/debug/Lavly
+      .__   .-".
+   (o\"\  |  |
+      \_\ |  |
+     _.---:_ |
+    ("-..-" /
+     "-.-" /
+       /   |
+       "--"  Welcome to Lavly!
+Enter your latitude: 
+```
+You'll notice that some features of the app aren't implemented yet. You're going to implement them along the way. I'll mention when you know what you need to know to implement certain bits. Open the Lavly project in your favourite text editor and lets get started.
+
+
 ## Basic syntax
 
 Let's take a look at some of the basic syntax of Swift. 
@@ -244,120 +271,6 @@ return
 ```
 The compiler has caught this for us and saved us from another runtime error. Hooray!
 
-### Functions and Closures
-
-#### Functions
-We can define functions with the `func` keyword. The argument and return types are required. If a function does not return a value, don't give a return type.
-
-```swift
-func checkAnagram(string1: String, string2: String) -> Bool {
-  return string1.sorted() == string2.sorted()
-}
-```
-This function checks if two strings are anagrams of one another.
-
-The function can then be called like so:
-
-```swift
-checkAnagram(string1: "rat", string2: "tar") // true
-checkAnagram(string1: "rat", string2: "ear") // false
-```
-Having to type `string1` and `string2` when we use this function seems unnecessary, it would be clear from context what we mean if we called: `checkAnagram("rat", "tar")` but obviously within the body of the function we still need to have access to `string1` and `string2`.
-
-Swift lets us define both a 'parameter name' (the thing you use in the body of the function) and an 'argument label' (the label you use when *calling* the function).
-
-For example we could call them `left` and `right` to the outside world and not change our body:
-
-```swift
-func checkAnagram(left string1: String, right string2: String) -> Bool {
-  return string1.sorted() == string2.sorted()
-}
-```
-And use the function like so:
-
-```
-checkAnagram(left: "rat", right: "tar") // true
-```
-By default the argument label is the same as the parameter name. In this case it would make sense not to have an argument label because the things we are passing in to this function are clear from context (we know an anagram is a relation between two strings). We can use the `_` symbol to specify this:
-
-```swift
-func checkAnagram(_ string1: String, _ string2: String) -> Bool {
-  return string1.sorted() == string2.sorted()
-}
-```
-And use the function like so:
-
-```
-checkAnagram("rat", "tar") // true
-```
-Much neater!
-
-
-#### Closures
-Closures are like functions but without a name. Let's define a closure that takes an integer and returns whether it is even or not:
-
-```swift
-let isEven = { (number: Int) -> Bool in
-	return number % 2 == 0
-}
-```
-
-This can then be called like so:
-
-```swift
-isEven(3) // false
-```
-Just the same as normal function syntax! So why would you use closures?
-
-Closures really come in to their own when you have a function that you're only going to need once. Arrays in Swift have a `filter` method which take a closure as an argument. This closure has to return a `Bool`. The method runs this function on each element in the array and gives us back only the elements for which the function returned `true`:
-
-```swift
-[1, 8, 5, 3, 3, 6, 7].filter({ (number: Int) -> Bool in
-	return number % 2 == 0
-})
-// [8, 6]
-```
-
-Swift lets us write this in a much more concise way.
-
-Swift knows that this is a filter on an array of `Int`s so we don't need to explicitly specify that it takes `Int`s or returns `Bool`:
-
-```swift
-[1, 8, 5, 3, 3, 6, 7].filter({ number in
-	return number % 2 == 0
-})
-```
-Since the body of our closure is only one line, Swift lets us omit the `return` statement:
-
-```swift
-[1, 8, 5, 3, 3, 6, 7].filter({ number in
-	number % 2 == 0
-})
-```
-
-Here we've given the parameter to our closure the name `number` but if we don't give parameters names, Swift gives them default names of `$0`, `$1` etc. in order:
-
-```swift
-[1, 8, 5, 3, 3, 6, 7].filter({ $0 % 2 == 0 })
-```
-
-Finally, when the last parameter to a function is a closure, Swift lets us break it out of the round brackets:
-
-```swift
-[1, 8, 5, 3, 3, 6, 7].filter { $0 % 2 == 0 }
-```
-Neat!
-Every step along the way here compiles and gives the same result as our original  filter code.
-
-**Another example**
-
-The `map` method on `Array` runs the given closure on each element of an `Array` and gives us an `Array` of the results. Here we use it to double each element:
-
-```swift
-[3, 4, 7].map { $0 * 2 }
-// [6, 8, 14]
-```
-
 ### Optionals
 
 In most other languages, any variable can potentially be empty (i.e. containing `null`).
@@ -448,6 +361,133 @@ let loverMiddleName = richardsLove?.middleName?.lowercased()
 
 If Richard doesn't have a true love, *or* if he does but they don't have a middle name, then a 'link in the chain' is missing and the whole expression evaluates to nil. Otherwise we get the value we wanted.
 
+### Functions and Closures
+
+#### Functions
+We can define functions with the `func` keyword. The argument and return types are required. If a function does not return a value, don't give a return type.
+
+```swift
+func checkAnagram(string1: String, string2: String) -> Bool {
+  return string1.sorted() == string2.sorted()
+}
+```
+This function checks if two strings are anagrams of one another.
+
+The function can then be called like so:
+
+```swift
+checkAnagram(string1: "rat", string2: "tar") // true
+checkAnagram(string1: "rat", string2: "ear") // false
+```
+
+**Exercise:**
+*You can now complete TODO items 1-5 in the Lavly Code*
+
+
+Having to type `string1` and `string2` when we use this function seems unnecessary, it would be clear from context what we mean if we called: `checkAnagram("rat", "tar")` but obviously within the body of the function we still need to have access to `string1` and `string2`.
+
+Swift lets us define both a 'parameter name' (the thing you use in the body of the function) and an 'argument label' (the label you use when *calling* the function).
+
+For example we could call them `left` and `right` to the outside world and not change our body:
+
+```swift
+func checkAnagram(left string1: String, right string2: String) -> Bool {
+  return string1.sorted() == string2.sorted()
+}
+```
+And use the function like so:
+
+```
+checkAnagram(left: "rat", right: "tar") // true
+```
+By default the argument label is the same as the parameter name. In this case it would make sense not to have an argument label because the things we are passing in to this function are clear from context (we know an anagram is a relation between two strings). We can use the `_` symbol to specify this:
+
+```swift
+func checkAnagram(_ string1: String, _ string2: String) -> Bool {
+  return string1.sorted() == string2.sorted()
+}
+```
+And use the function like so:
+
+```
+checkAnagram("rat", "tar") // true
+```
+Much neater!
+
+**Exercise:**
+*You can now complete TODO item 6 in the Lavly Code*
+
+
+#### Closures
+Closures are like functions but without a name. Let's define a closure that takes an integer and returns whether it is even or not:
+
+```swift
+let isEven = { (number: Int) -> Bool in
+	return number % 2 == 0
+}
+```
+
+This can then be called like so:
+
+```swift
+isEven(3) // false
+```
+Just the same as normal function syntax! So why would you use closures?
+
+Closures really come in to their own when you have a function that you're only going to need once. Arrays in Swift have a `filter` method which take a closure as an argument. This closure has to return a `Bool`. The method runs this function on each element in the array and gives us back only the elements for which the function returned `true`:
+
+```swift
+[1, 8, 5, 3, 3, 6, 7].filter({ (number: Int) -> Bool in
+	return number % 2 == 0
+})
+// [8, 6]
+```
+
+Swift lets us write this in a much more concise way.
+
+Swift knows that this is a filter on an array of `Int`s so we don't need to explicitly specify that it takes `Int`s or returns `Bool`:
+
+```swift
+[1, 8, 5, 3, 3, 6, 7].filter({ number in
+	return number % 2 == 0
+})
+```
+Since the body of our closure is only one line, Swift lets us omit the `return` statement:
+
+```swift
+[1, 8, 5, 3, 3, 6, 7].filter({ number in
+	number % 2 == 0
+})
+```
+
+Here we've given the parameter to our closure the name `number` but if we don't give parameters names, Swift gives them default names of `$0`, `$1` etc. in order:
+
+```swift
+[1, 8, 5, 3, 3, 6, 7].filter({ $0 % 2 == 0 })
+```
+
+Finally, when the last parameter to a function is a closure, Swift lets us break it out of the round brackets:
+
+```swift
+[1, 8, 5, 3, 3, 6, 7].filter { $0 % 2 == 0 }
+```
+Neat!
+Every step along the way here compiles and gives the same result as our original  filter code.
+
+**Another example**
+
+The `map` method on `Array` runs the given closure on each element of an `Array` and gives us an `Array` of the results. Here we use it to double each element:
+
+```swift
+[3, 4, 7].map { $0 * 2 }
+// [6, 8, 14]
+```
+
+**Exercise:**
+*You can now complete TODO items 7-10 in the Lavly Code.*
+
+**Note:** *The remainder of these notes cover some other interesting bits of Swift to help you understand the rest of the code in the project*
+
 ## Classes, Structures, Enumerations
 
 ### Classes
@@ -526,6 +566,9 @@ Wait... so what's the difference between Structs and Classes?
   - Inheritance (`struct`s can use `protocol`s, something we'll discuss later)
   - Type casting
   - Deinitializers
+
+**Exercise:**
+*Look at the implementation of the `Toilet` model in `Toilet.swift`*
 
 ### Enumerations
 
@@ -625,6 +668,9 @@ let soupOfTheDayPrice = Price.unconfirmed
 ...
 ```
 
+**Note:**
+*Does this look like anything we've seen before? It turns out Optional is actually implemented behind the scenes as an enum.*
+
 ### Extensions
 
 Extensions allow us to add additional methods to existing classes, structs and enums.
@@ -677,3 +723,5 @@ Protocols are more powerful than they first appear:
 - *Value* types (such as `struct` types, and `enum` types) can conform to protocols, as we've just seen
 
 With all these features, [Protocol-Oriented Programming](https://m.youtube.com/watch?v=g2LwFZatfTI) is a real alternative (or accompaniment) to Obect-Oriented Programming that can make for simpler code. 
+
+**Exercise:** *Check out the further reading links for things that might interest you. What other features would you want to add to this app?* 

@@ -4,10 +4,19 @@ struct Location {
   let latitude: Double
   let longitude: Double
 
-  // TODO #6:
-  // Using what you know about argument labels, Add a function to `Location` 
-  // that can be called like this: `locationA.distance(to: locationB)`.
-  // This should utilise the existing `distanceBetween` function below.
+  /// The straight-line distance from this location to another given location
+  func distance(to otherLocation: Location) -> Double {
+    return distanceBetween(
+      lat1: self.latitude,
+      long1: self.longitude,
+      lat2: otherLocation.latitude,
+      long2: otherLocation.longitude
+    )
+  }
+
+  var description: String {
+    return "(\(latitude), \(longitude))"
+  }
 }
 
 /// Takes an angle in degrees and returns the angle converted to radians
