@@ -55,6 +55,37 @@ func readRequiresBabyChanging() -> Bool {
   }
 }
 
+
+enum Gender {
+case male
+case female
+case unisex
+}
+
+func gender(from string: String) -> Gender? {
+  switch string {
+  case "male":
+    return .male
+  case "female":
+    return .female
+  case "unisex":
+    return .unisex
+  default:
+    return nil
+  }
+}
+
+func readGender() -> Gender {
+  while true {
+    print("Do you need male, female or unisex toilets?")
+    if let input = readLine(), let gender = gender(from: input) {
+      return gender
+    }
+    print("Invalid option, please try again")
+  }
+}
+
+
 func readShowFreeOnly() -> Bool {
   while(true) {
     print("Show free toilets only? (Y/n)")
