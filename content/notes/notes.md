@@ -1,33 +1,63 @@
 ### Why Swift?
 
-Swift is *the* modern language for Apple platforms. Objective-C was, for a long time, the de facto language for Apple platforms. Now many software shops are not writing any new Objective-C code, in favour of writing all new code in Swift. The vast majority of Swift code is written for iOS and MacOS but its reach doesn't end there. I want to show you today that Swift is a **powerful** and **usable** general-purpose programming language that is not constrained to Apple platforms.
+Swift is designed to be:
+> a programming language to empower everyone to turn their ideas into apps on any platform.
 
-Swift is open source. You can find the [compiler](https://github.com/apple/swift), [standard library](https://github.com/apple/swift/tree/master/stdlib/public/core) and [core libraries](https://github.com/apple/swift-corelibs-foundation) on GitHub. Proposals for changes are also open to all. If you choose to, you can participate in the process of shpaing the future of this language.
 
-If you're interested in mobile app development then you'll need to keep an eye on Swift but even outside of that context Swift is a great example of a modern programming language. Learning Swift may help you understand many other languages from which it draws inspiration.
+Swift was designed by Apple and has taken over (from Objective-C) as the go-to language for programming Apple platforms. Whilst the vast majority of Swift code is written for iOS and MacOS, its reach doesn't end there. I want to show you today that Swift is a **powerful** and **usable** general-purpose programming language that is not constrained to Apple platforms.
+
+Swift is open source. That is to say, anybody can contribute to its development by filing issues, proposing new features and changes, and by directly contributing code. You can find the [compiler](https://github.com/apple/swift), [standard library](https://github.com/apple/swift/tree/master/stdlib/public/core) and [core libraries](https://github.com/apple/swift-corelibs-foundation) on GitHub. If you choose to, you can participate in the process of shaping the future of this young language.
+
+If you're interested in mobile app development then Swift programming is an essential skill right now but even outside of that context Swift is a great example of a modern programming language. Learning Swift may help you understand many other languages from which it draws inspiration.
 
 ### What we will cover
 
 - Swift basic syntax
 - Stand-out Swift features
-- Swift package manager
+- Building an example app
 
-### Reference
+This workshop covers most of the content of the 'A Swift Tour' section of [The Swift Programming Language](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html). This is the go-to resource for learning the interesting bits of Swift and if you're interested in learning more then that should be your first stop.
 
-Use the [Swift Standard Library Documentation](https://developer.apple.com/documentation/swift) to quickly look up the various Swift data structures and APIs.
+### References
 
-## Running Swift
-Let's start by making sure we can run Swift.
+Most of the time when you write Swift, you are using a combination of:
 
-### REPL mode
+- built in Swift features (e.g. `Array`s)
+- Swift Standard Library features (e.g. Sorting `Array`s)
+- `Foundation` library features (e.g. Separating a `String` by, say, commas)
 
-Runs a 'read, evaluate, print' loop.
+
+
+If you're on a Mac, Xcode is the best way of reading the documentation for these things. Open Xcode and go to Help > Developer Documentation and you can search for what you need.
+
+If you're not on a Mac, it can be tricky to find the right docs though they are online:
+
+- [Swift Standard Library Documentation](https://developer.apple.com/documentation/swift)
+- [Foundation Documentation](https://developer.apple.com/documentation/foundation)
+
+In practice, Google is usually a quicker way to find the information you need.
+
+## Getting started
+To follow along with this workshop, you'll need to clone the example repository:
+
+```bash
+$ git clone https://github.com/hackersatcambridge/workshop-intro-to-swift
+Cloning into workshop-intro-to-git...
+$ cd workshop-intro-to-git/examples
+```
+
+### Running Swift
+Let's start by making sure we can run Swift
+
+#### REPL mode
+
+Runs a 'read, evaluate, print' loop. Type instructions and press enter to run them. Note that this mode may not work in Linux containers (but should do on native Linux machines).
 
 ```bash
 $ swift
 ```
 
-### Interpreted mode
+#### Interpreted mode
 
 File is read and executed line-by-line.
 
@@ -35,7 +65,7 @@ File is read and executed line-by-line.
 $ swift test.swift
 ```
 
-### Compiled mode
+#### Compiled mode
 
 The swift file is compiled into a native executable.
 
