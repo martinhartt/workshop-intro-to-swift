@@ -50,7 +50,26 @@ func readLocation() -> Location {
 // What should be the return type of this function?
 
 
+enum Gender {
+case male
+case female
+case unisex
+}
+
 // TODO #4:
-// Using what you know about switch statements, add a function
-// readShowFreeOnly() similar to readRequiresBabyChanging that asks if the
-// user wants to see only free toilets.
+// Using what you know about switch statements, implement this function genderFromString
+// which returns a Gender given the user input string. If it doesn't match with
+// any of the options, return nil.
+func genderFromString(string: String) -> Gender? {
+  return nil
+}
+
+func readGender() -> Gender {
+  while true {
+    print("Do you need male, female or unisex toilets?")
+    if let input = readLine(), let gender = genderFromString(string: input) {
+      return gender
+    }
+    print("Invalid option, please try again")
+  }
+}
