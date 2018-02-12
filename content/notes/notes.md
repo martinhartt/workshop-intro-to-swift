@@ -106,6 +106,11 @@ You'll notice that some features of the app aren't implemented yet. You're going
 
 Let's take a look at some of the basic syntax of Swift. 
 
+---
+**Note:** *After this section you will be able to complete TODO items 1-5 in the code*
+
+---
+
 Unlike other languages, semicolons are optional and generally not preffered.
 
 ### Values
@@ -385,10 +390,11 @@ The function can then be called like so:
 checkAnagram(string1: "rat", string2: "tar") // true
 checkAnagram(string1: "rat", string2: "ear") // false
 ```
-
+---
 **Exercise:**
 *You can now complete TODO items 1-5 in the Lavly Code*
 
+---
 
 Having to type `string1` and `string2` when we use this function seems unnecessary, it would be clear from context what we mean if we called: `checkAnagram("rat", "tar")` but obviously within the body of the function we still need to have access to `string1` and `string2`.
 
@@ -420,9 +426,11 @@ checkAnagram("rat", "tar") // true
 ```
 Much neater!
 
+---
 **Exercise:**
 *You can now complete TODO item 6 in the Lavly Code*
 
+---
 
 #### Closures
 Closures are like functions but without a name. Let's define a closure that takes an integer and returns whether it is even or not:
@@ -489,10 +497,15 @@ The `map` method on `Array` runs the given closure on each element of an `Array`
 // [6, 8, 14]
 ```
 
+---
 **Exercise:**
 *You can now complete TODO items 7-10 in the Lavly Code.*
 
+---
+
 **Note:** *The remainder of these notes cover some other interesting bits of Swift to help you understand the rest of the code in the project*
+
+---
 
 ## Classes, Structures, Enumerations
 
@@ -573,8 +586,11 @@ Wait... so what's the difference between Structs and Classes?
   - Type casting
   - Deinitializers
 
+---
 **Exercise:**
 *Look at the implementation of the `Toilet` model in `Toilet.swift`*
+
+---
 
 ### Enumerations
 
@@ -730,4 +746,7 @@ Protocols are more powerful than they first appear:
 
 With all these features, [Protocol-Oriented Programming](https://m.youtube.com/watch?v=g2LwFZatfTI) is a real alternative (or accompaniment) to Obect-Oriented Programming that can make for simpler code. 
 
+---
 **Exercise:** *Check out the further reading links for things that might interest you. What other features would you want to add to this app?* 
+
+---
