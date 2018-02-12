@@ -131,7 +131,7 @@ otherName = "Hal" // This succeeds
 We can define the 'type' of a variable explicitly using a colon followed by the type name:
 
 ```swift
-let title: String
+var title: String
 title = "Mr"
 ```
 Notice that we didn't *have* to do this before since Swift can *infer* the type of the variable from the type of the value that you assign to it. e.g. if we assign a String to `title` then it knows that `title` should be of type `String`
