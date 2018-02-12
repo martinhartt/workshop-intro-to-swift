@@ -322,7 +322,7 @@ if let recipient = richardsLove {
   sendRoses(to: recipient)
 }
 ```
-`recipient` is *bound* to the value of `richardsLove` if it is not `nil`. Within the if statement, `recipient` has type `TrueLove` (i.e. non-optional)
+`recipient` is set to the value of `richardsLove` if it is not `nil`. Within the if statement, `recipient` has type `TrueLove` (i.e. non-optional)
 
 #### Working with Optionals
 These optional things come up a lot so it's useful to have a few ways of manipulating them.
